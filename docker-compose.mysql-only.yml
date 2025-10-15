@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ospos_mysql_local
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass123
+      MYSQL_DATABASE: ospos_local
+      MYSQL_USER: ospos_user
+      MYSQL_PASSWORD: ospos_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data_local:/var/lib/mysql
+      - ./app/Database/database.sql:/docker-entrypoint-initdb.d/01-structure.sql
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --sql-mode=STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO
+
+  # phpMyAdmin para gestionar la base de datos fácilmente
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ospos_phpmyadmin_local
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: ospos_user
+      PMA_PASSWORD: ospos_pass
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data_local:
