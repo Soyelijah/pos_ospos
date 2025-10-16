@@ -1,65 +1,25 @@
-# OSPOS - Open Source Point of Sale System
-# Gitignore for local SQLite development setup
+# Archivos ignorados
+# Bases de datos y sensibles
+posventa.db
+posventa-*.db
+backups/
+certificates/
+logs/
 
-# Environment files
-.env
-.env.local
-.env.development
-.env.production
+# Runtime
+writable/cache/
+writable/logs/
+writable/sessions/
 
-# Logs
-writable/logs/*.log
-writable/logs/*.txt
-!writable/logs/index.html
+# Dependencias
+vendor/
 
-# Cache files
-writable/cache/*
-!writable/cache/index.html
-
-# Session files
-writable/session/*
-!writable/session/index.html
-
-# Debug and temporary files
-writable/debugbar/*
-!writable/debugbar/index.html
-
-# Database files (SQLite)
-writable/*.db
-writable/*.sqlite
-writable/*.sqlite3
-
-# Backup files
-*.backup
-*.bak
-
-# Uploads (keep structure but not files)
-writable/uploads/*
-!writable/uploads/index.html
-
-# IDE files
+# SO/editores
+Thumbs.db
+.DS_Store
 .vscode/
 .idea/
-*.swp
-*.swo
 
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Composer vendor (keep for portable setup)
-# vendor/ - We keep vendor for portable installation
-
-# Node modules (if any)
+# Node/Build (si llegara a usarse)
 node_modules/
-
-# Temporary scripts
-*_temp.php
-*_debug.php
-*_test.php
-
-# Keep important setup files
-!iniciar_ospos.bat
-!verificar_php.php
-!README_OSPOS_PORTABLE.md
+dist/
