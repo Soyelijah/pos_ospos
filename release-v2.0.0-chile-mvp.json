@@ -1,0 +1,1 @@
+{"tag":"v2.0.0-chile-mvp","commit":"ba757e14c68f04d19e4e8aba167f07711aa1f597","notes":"MVP Chile local listo para producción: SQLite, CLP sin decimales, IVA 19% incluido, SII scaffolding, productos CL, scripts PowerShell y .gitignore Windows/runtime."}
